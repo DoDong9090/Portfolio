@@ -28,7 +28,7 @@ class MasterApplication : Application() {
             if (checkIsLogin()) {
                 getUserToken()?.let {token->
                     val requeset = original.newBuilder()//그걸 개조함(헤더를 붙이고)
-                        .header("Authoriztion", "token "+token)
+                        .header("Authorization", "token "+token)
                         .build()
                     it.proceed(requeset)
                 }
