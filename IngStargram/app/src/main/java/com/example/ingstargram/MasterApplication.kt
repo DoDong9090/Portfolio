@@ -39,7 +39,7 @@ class MasterApplication : Application() {
 
 
             //그러고 다시 내보냄
-        
+
         val client = OkHttpClient.Builder()//okhttpclient로 클라이언트를 만들고 거기에
             .addInterceptor(header)//인터셉터엔 위에서 만든 헤더를 붙여줌
             .addNetworkInterceptor(StethoInterceptor())//addNetworkIntercepter은 모든 통신을 낚아챔,
