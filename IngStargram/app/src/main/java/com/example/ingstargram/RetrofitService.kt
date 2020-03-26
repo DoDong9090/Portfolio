@@ -2,27 +2,16 @@ package com.example.ingstargram
 
 import android.app.Person
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface RetrofitService{
-    @GET("json/students/")
-    fun getStudentsList(): Call<ArrayList<PersonFromServer>>
-
-    @POST("json/student/")
-    fun createStudent(
-        @Body params : HashMap<String, Any>
-    ): Call<PersonFromServer>
-
-    @POST("json/student/")
-    fun createStudentEasy(
-        @Body person : PersonFromServer
-    ): Call<PersonFromServer>
 
     @POST("user/signup/")
+    @FormUrlEncoded
     fun register(
-        @Body register : Register
+        @Field("username")username : String,
+        @Field("password1")password1 : String,
+        @Field("password2")password2: String
     ): Call<User>
 
 }

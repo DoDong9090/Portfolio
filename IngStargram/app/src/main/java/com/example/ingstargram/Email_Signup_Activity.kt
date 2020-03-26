@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_email__signup_.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -17,6 +18,8 @@ class Email_Signup_Activity : AppCompatActivity() {
     lateinit var userPassword1View : EditText
     lateinit var userPassword2View : EditText
     lateinit var registerBtn : TextView
+    lateinit var loginBtn : TextView
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,23 +27,29 @@ class Email_Signup_Activity : AppCompatActivity() {
         setContentView(R.layout.activity_email__signup_)
 
         initView(this@Email_Signup_Activity)
-        setupListener()
+        setupListener(this)
 
         }
 
 
-    fun setupListener(){
+    fun setupListener(activity: Activity){
         registerBtn.setOnClickListener {
             register(this@Email_Signup_Activity)
+        }
+        loginBtn.setOnClickListener {
+            val sp = activity.getSharedPreferences("login_sp", Context.MODE_PRIVATE)
+            val token = sp.getString("login_sp","")
+
         }
     }
     fun register(activity: Activity){
         val username = usernameView.text.toString()
         val password1 = userPassword1View.text.toString()
         val password2 = userPassword2View.text.toString()
-        val register = Register(username,password1,password2)
 
-        (application as MasterApplication).service.register(register).enqueue(object:
+        (application as MasterApplication).service.register(
+            username, password1, password2
+        ).enqueue(object :
             Callback<User>{
             override fun onFailure(call: Call<User>, t: Throwable) {
                 Toast.makeText(activity, "가입에 실패하였습니다.", Toast.LENGTH_LONG).show()
@@ -69,6 +78,7 @@ class Email_Signup_Activity : AppCompatActivity() {
         userPassword1View = activity.findViewById(R.id.password1_inpubox)
         userPassword2View = activity.findViewById(R.id.password2_inpubox)
         registerBtn = activity.findViewById(R.id.register)
+        loginBtn = activity.findViewById(R.id.login)
     }
     fun getUserName():String{
         return usernameView.text.toString()

@@ -24,21 +24,22 @@ class MasterApplication : Application() {
         val header = Interceptor {
             //Interceptor은 휴대폰으로부터 통신이 나갈때 통신을 가로챔
             val original = it.request()//그걸 original에 담아두고
-
             if (checkIsLogin()) {
-                getUserToken()?.let {token->
+                getUserToken()?.let { token ->
                     val requeset = original.newBuilder()//그걸 개조함(헤더를 붙이고)
-                        .header("Authorization", "token "+token)
+                        .header("Authorization", "token " + token)
                         .build()
                     it.proceed(requeset)
                 }
             } else {
                 it.proceed(original)
             }
+        }
+
 
 
             //그러고 다시 내보냄
-        }
+        
         val client = OkHttpClient.Builder()//okhttpclient로 클라이언트를 만들고 거기에
             .addInterceptor(header)//인터셉터엔 위에서 만든 헤더를 붙여줌
             .addNetworkInterceptor(StethoInterceptor())//addNetworkIntercepter은 모든 통신을 낚아챔,
