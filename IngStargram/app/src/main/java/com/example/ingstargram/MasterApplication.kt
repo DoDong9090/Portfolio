@@ -52,17 +52,15 @@ class MasterApplication : Application() {
     fun checkIsLogin(): Boolean {
         val sp = getSharedPreferences("login_sp", Context.MODE_PRIVATE)
         val token = sp.getString("login_sp", "null")
-        if (token != "null")
-            return true
-        else
-            return false
+        if (token != "null") return true
+        else  return false
     }
 
     fun getUserToken(): String? {
         val sp = getSharedPreferences("login_sp", Context.MODE_PRIVATE)
         val token = sp.getString("login_sp", "null")
-        if (token == "null") return null
-        else return token
+        return if (token == "null") null
+        else token
     }
 
 }
