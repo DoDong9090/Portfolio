@@ -1,5 +1,7 @@
 package com.example.ingstargram
 
+import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -37,7 +39,8 @@ class ITubeActivity : AppCompatActivity() {
                         val adapter = ItubeAdapter(
                             itubeList!!,
                             LayoutInflater.from(this@ITubeActivity),
-                            glide
+                            glide,
+                            this@ITubeActivity
                         )
                         itube_list_recycler.adapter = adapter
                     }
@@ -48,7 +51,8 @@ class ITubeActivity : AppCompatActivity() {
 class ItubeAdapter(
     var itubeList : ArrayList<ITube>,
     val inflater : LayoutInflater,
-    val glide: RequestManager
+    val glide: RequestManager,
+    val activity: Activity
 ) : RecyclerView.Adapter<ItubeAdapter.ViewHolder>(){
     inner class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
         val title: TextView
@@ -58,6 +62,15 @@ class ItubeAdapter(
             title = itemView.findViewById(R.id.itube_title)
             thumnail = itemView.findViewById(R.id.itube_thumbnail)
             content = itemView.findViewById(R.id.itube_content)
+
+            itemView.setOnClickListener{
+                val position: Int = adapterPosition
+                val intent = Intent(activity, Itube_detail::class.java)
+                intent.putExtra("video_url",itubeList.get(position).video)
+                intent.putExtra("video_title",itubeList.get(position).title)
+                intent.putExtra("video_content",itubeList.get(position).content)
+                activity.startActivity(intent)
+            }
         }
     }
 
