@@ -12,7 +12,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 class MasterApplication : Application() {
 
     lateinit var service: RetrofitService
-
     override fun onCreate() {
         super.onCreate()
         Stetho.initializeWithDefaults(this)
@@ -36,10 +35,6 @@ class MasterApplication : Application() {
             }
         }
 
-
-
-            //그러고 다시 내보냄
-
         val client = OkHttpClient.Builder()//okhttpclient로 클라이언트를 만들고 거기에
             .addInterceptor(header)//인터셉터엔 위에서 만든 헤더를 붙여줌
             .addNetworkInterceptor(StethoInterceptor())//addNetworkIntercepter은 모든 통신을 낚아챔,
@@ -57,8 +52,10 @@ class MasterApplication : Application() {
     fun checkIsLogin(): Boolean {
         val sp = getSharedPreferences("login_sp", Context.MODE_PRIVATE)
         val token = sp.getString("login_sp", "null")
-        if (token != "null") return true
-        else return false
+        if (token != "null")
+            return true
+        else
+            return false
     }
 
     fun getUserToken(): String? {

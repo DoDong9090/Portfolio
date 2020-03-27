@@ -14,4 +14,6 @@ interface RetrofitService{
         @Field("password2")password2: String
     ): Call<User>
 
+    @GET("youtube/list/")
+    fun getITubeList():Call<ArrayList<ITube>>
 }
