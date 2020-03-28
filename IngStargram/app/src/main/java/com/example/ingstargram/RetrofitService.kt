@@ -16,4 +16,7 @@ interface RetrofitService{
 
     @GET("youtube/list/")
     fun getITubeList():Call<ArrayList<ITube>>
+
+    @GET("melon/list/")
+    fun getSongList():Call<ArrayList<Song>>
 }

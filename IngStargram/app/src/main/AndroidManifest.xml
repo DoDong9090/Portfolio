@@ -3,7 +3,7 @@
     package="com.example.ingstargram">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:name=".MasterApplication"
@@ -13,13 +13,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Itube_detail"></activity>
-        <activity android:name=".ITubeActivity">
+        <activity android:name=".BelonActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".Itube_detail" />
+        <activity android:name=".ITubeActivity">
+
         </activity>
         <activity android:name=".Email_Signup_Activity" />
         <activity android:name=".MainActivity" />
