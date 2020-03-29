@@ -31,5 +31,6 @@ class Itube_detail : AppCompatActivity() {
         video_view.start()
         mediaController.show()
 
+
     }
 }

@@ -1,6 +1,8 @@
 package com.example.ingstargram
 
 import android.app.Activity
+import android.media.MediaPlayer
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,8 +17,12 @@ import kotlinx.android.synthetic.main.activity_belon.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.lang.Exception
 
 class BelonActivity : AppCompatActivity() {
+
+
+    var mediaPlayer : MediaPlayer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +51,13 @@ class BelonActivity : AppCompatActivity() {
             }
         )
     }
+
+    override fun onPause() {
+        mediaPlayer?.stop()
+        mediaPlayer?.release()
+        super.onPause()
+    }
+
     inner class BelonAdapter(
         var songList : ArrayList<Song>,
         val inflater : LayoutInflater,
@@ -60,9 +73,23 @@ class BelonActivity : AppCompatActivity() {
                 thumnail = itemView.findViewById(R.id.song_img)
                 play = itemView.findViewById(R.id.song_play)
 
-                itemView.setOnClickListener{
+                play.setOnClickListener{
                     val position: Int = adapterPosition
+                    val path = songList.get(position).song
 
+                    try{
+                        mediaPlayer?.stop()
+                        mediaPlayer?.release()//영샹이나 mp3재생할때 리고스를 많이 붙잡게되는데 이걸 놔주는 용도
+                        mediaPlayer = null
+                        mediaPlayer = MediaPlayer.create(
+                            this@BelonActivity,
+                            Uri.parse(path)
+                        )
+
+                        mediaPlayer?.start()
+                    }catch(e:Exception){
+
+                    }
                 }
             }
         }
@@ -82,3 +109,4 @@ class BelonActivity : AppCompatActivity() {
         }
     }
 }
+
