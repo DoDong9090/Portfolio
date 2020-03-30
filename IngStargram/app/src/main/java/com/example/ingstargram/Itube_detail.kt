@@ -18,11 +18,6 @@ class Itube_detail : AppCompatActivity() {
         val content = intent.getStringExtra("video_content")
         content2.setText(content)
 
-
-
-
-
-
         val url = intent.getStringExtra("video_url")
         val mediaController = MediaController(this@Itube_detail)
         video_view.setVideoPath(url)

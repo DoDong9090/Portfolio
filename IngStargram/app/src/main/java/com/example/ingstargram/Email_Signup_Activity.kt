@@ -2,6 +2,7 @@ package com.example.ingstargram
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
@@ -37,15 +38,16 @@ class Email_Signup_Activity : AppCompatActivity() {
             register(this@Email_Signup_Activity)
         }
         loginBtn.setOnClickListener {
-            val sp = activity.getSharedPreferences("login_sp", Context.MODE_PRIVATE)
-            val token = sp.getString("login_sp","")
+            startActivity(
+                Intent(this@Email_Signup_Activity, loginActivity::class.java)
+            )
 
         }
     }
     fun register(activity: Activity){
-        val username = usernameView.text.toString()
-        val password1 = userPassword1View.text.toString()
-        val password2 = userPassword2View.text.toString()
+        val username = getUserName()
+        val password1 = getUserPassword1()
+        val password2 = getUserPassword2()
 
         (application as MasterApplication).service.register(
             username, password1, password2
@@ -61,6 +63,7 @@ class Email_Signup_Activity : AppCompatActivity() {
                     val user = response.body()
                     val token = user!!.token
                     saverUserToken(token!!, activity)
+                    (application as MasterApplication).createRetrofit()
                 }
 
             }
