@@ -1,32 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".IngStargramPostListActivity">
+    tools:context=".IngStargramUserInfo">
+
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#EF7AA2"
-        android:padding="16dp"
-        android:text="IngStargram"
-        android:textSize="20dp"
-        android:textStyle="bold" />
+        android:layout_height="40dp"
+        android:id="@+id/logout"
+        android:text="로그아웃"
+        android:layout_margin="32dp"
+        android:gravity="center"
+        android:background="#B3B3B3"
+        android:textStyle="bold"
+        android:textSize="20dp"/>
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/post_recyclerview"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="#FDE3EC"
+        android:layout_alignParentBottom="true"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -87,5 +85,4 @@
 
 
     </LinearLayout>
-
-</LinearLayout>
+</RelativeLayout>

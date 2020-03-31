@@ -14,7 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".IngStargramPostListActivity"></activity>
+        <activity android:name=".IngStargramUpload"></activity>
+        <activity android:name=".IngStargramMyPostListActivity" />
+        <activity android:name=".IngStargramUserInfo" />
+        <activity android:name=".IngStargramPostListActivity" />
         <activity android:name=".loginActivity" />
         <activity android:name=".BelonActivity" />
         <activity android:name=".Itube_detail" />

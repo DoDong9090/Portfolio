@@ -21,6 +21,7 @@ class loginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        val intent = Intent(this, IngStargramUserInfo::class.java)
         register.setOnClickListener {
             val intent = Intent(this, Email_Signup_Activity::class.java)
             startActivity(intent)
@@ -44,13 +45,12 @@ class loginActivity : AppCompatActivity() {
                         startActivity(
                             Intent(this@loginActivity, IngStargramPostListActivity::class.java)
                         )
+                        intent.putExtra("loginID",username)
                     }
 
                 }
             })
         }
-
-
     }
     fun saveUserToken(token: String, activity: Activity){
         val sp = activity.getSharedPreferences("login_sp", Context.MODE_PRIVATE)

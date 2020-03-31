@@ -1,5 +1,6 @@
 package com.example.ingstargram
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Layout
@@ -54,6 +55,13 @@ class IngStargramPostListActivity : AppCompatActivity() {
                 }
             }
         )
+        //homebutton.setOnClickListener {startActivity(Intent(this,IngStargramPostListActivity::class.java))}
+        settingbutton.setOnClickListener {startActivity(Intent(this,IngStargramUserInfo::class.java))}
+        mybutton.setOnClickListener {startActivity(Intent(this,IngStargramMyPostListActivity::class.java))}
+        uploadbutton.setOnClickListener {startActivity(Intent(this,IngStargramUpload::class.java))}
+
+
+
     }
 }
 class PostAdatper(
