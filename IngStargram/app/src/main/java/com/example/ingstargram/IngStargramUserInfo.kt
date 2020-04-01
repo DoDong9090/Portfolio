@@ -11,6 +11,10 @@ class IngStargramUserInfo : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ing_stargram_user_info)
+        val userinfo = intent.getStringExtra("LoginID")
+        userInfo.setText(userinfo)
+
+
         homebutton.setOnClickListener {
             startActivity(
                 Intent(

@@ -9,22 +9,32 @@
 
 
     <TextView
+        android:id="@+id/userInfo"
+        android:layout_width="300dp"
+        android:layout_height="400dp"
+        android:layout_centerInParent="true"
+        android:padding="10dp"
+        android:textColor="#000000"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/logout"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:id="@+id/logout"
-        android:text="로그아웃"
+        android:layout_alignBottom="@+id/userInfo"
         android:layout_margin="32dp"
-        android:gravity="center"
         android:background="#B3B3B3"
-        android:textStyle="bold"
-        android:textSize="20dp"/>
+        android:gravity="center"
+        android:text="로그아웃"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="#FDE3EC"
         android:layout_alignParentBottom="true"
+        android:background="#FDE3EC"
         android:orientation="horizontal">
 
         <LinearLayout
