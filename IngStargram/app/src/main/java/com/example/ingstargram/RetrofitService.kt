@@ -28,7 +28,7 @@ interface RetrofitService{
     @GET("melon/list/")
     fun getSongList():Call<ArrayList<Song>>
 
-    @GET("/instagram/post/list/all/")
+    @GET("instagram/post/list/all/")
     fun getAllPosts(): Call<ArrayList<Post>>
 
     @Multipart
